@@ -1,7 +1,7 @@
 # Weekend 1 Challenge Starter Repo
 
-*Author: Charles Kuruvila*
-*Date : 01/07/2017*
+* *Author: Charles Kuruvila*
+* *Date : 01/07/2017*
 
 1. Data entered  into the text fields are appended to the DOM below the form.
 2. Validation implemented onto the inputs field through *HTML pattern* attribute.
