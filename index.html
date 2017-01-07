@@ -8,21 +8,43 @@
       integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
       crossorigin="anonymous"></script>
     <script src="app.js" charset="utf-8"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
     </head>
   <body>
     <form>
       <label for="employeeFirstName">First Name</label>
-      <input type="text" id="employeeFirstName" name="employeeFirstName" />
+      <input type="text" id="employeeFirstName" name="employeeFirstName" pattern="[a-zA-Z]*" />
       <label for="employeeLastName">Last Name</label>
-      <input type="text" id="employeeLastName" name="employeeLastName" />
+      <input type="text" id="employeeLastName" name="employeeLastName" pattern="[a-zA-Z]*"/>
       <label for="employeeIdNumber">ID Number</label>
-      <input type="text" name="employeeIdNumber" />
+      <input type="text" name="employeeIdNumber" pattern="[0-9]*"/>
+      <label for="employeeJobTitle">Job Title</label>
+      <input type="text" name="employeeJobTitle" pattern="[a-zA-Z]*"/>
+      <label for="employeeAnnualSalary">Annual Salary</label>
+      <input type="text" name="employeeAnnualSalary" pattern="[0-9]*.?[0-9]+"/>
       <input type="submit" value="Submit" />
     </form>
 
     <div id="employees">
-      <h2>Employees</h2>
+      <h4>Employee List</h4>
+      <table id="table_id">
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Annual Salary</th>
+          </tr>
+        </thead>
+        <tbody id="employee">
+        </tBody>
+      </table>
       <!-- to be added via JavaScript -->
+    </div>
+
+    <div id=totalExpenditure>
+      Monthly Salary Expenditure:<input type="text" id="amt" value='0.0' readonly>
     </div>
   </body>
 </html>
