@@ -5,6 +5,6 @@
 
 #### Summary
 1. Data entered  into the text fields are appended to the DOM below the form.
-2. Validation implemented onto the inputs field through *HTML pattern* attribute.
-3. Annual salary appended to Monthly Salary Expenditure set as *Read Only* field.
+2. Validation implemented onto the input fields through *HTML pattern* attribute.
+3. Annual salary for each entry appended to Monthly Salary Expenditure set as *Read Only* field.
 4. User has the ability to delete one row at a time. *Monthly Salary Expenditure* is *updated* accordingly.
