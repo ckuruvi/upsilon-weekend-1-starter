@@ -25,7 +25,7 @@
       console.log('click delete button jquery value'+$(this));
       var totalExp=$('#totalExpenditure').find('input[type=text]').val();
       var currentEmpAnnualSal=$(this).closest('tr').find('#empSal').text();
-      $('#totalExpenditure').find('input[type=text]').val(Number(totalExp)-Number(currentEmpAnnualSal));
+      $('#totalExpenditure').find('input[type=text]').val(Number(totalExp)-(Number(currentEmpAnnualSal)/12));
       console.log("empSalary"+currentEmpAnnualSal);
       $(this).closest('tr').remove();
 
@@ -47,7 +47,7 @@
     $('#employee').append($emp);
     var salary=emp.employeeAnnualSalary;
     var totalExp=$('#totalExpenditure').find('input[type=text]').val();
-    var newTotalExp=Number(salary)+Number(totalExp);
+    var newTotalExp=Number(salary)/12+Number(totalExp);
     $('#totalExpenditure').find('input[type=text]').val(newTotalExp);
   }
 
