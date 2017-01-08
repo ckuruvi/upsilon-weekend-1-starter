@@ -1,37 +1,35 @@
   $(function () {
-    console.log('document is ready');
 
     $('form').on('submit', function (event) {
-      console.log('form submitted');
 
       event.preventDefault();
-
       var formData = {};
       var formAsArray = $(this).serializeArray();
-
       formAsArray.forEach(function (input) {
         formData[input.name] = input.value;
       });
-
-
-      //appendDom(formData);
-      appendToTable(formData);
-      clearForm();
+    appendToTable(formData);
+    clearForm();
     });
+
+
 
     $('#employees').on('click','button',function(event){
-      console.log("*********inside delete button event**********");
-      console.log('click delete button'+this);
-      console.log('click delete button jquery value'+$(this));
-      var totalExp=$('#totalExpenditure').find('input[type=text]').val();
-      var currentEmpAnnualSal=$(this).closest('tr').find('#empSal').text();
-      $('#totalExpenditure').find('input[type=text]').val(Number(totalExp)-(Number(currentEmpAnnualSal)/12));
-      console.log("empSalary"+currentEmpAnnualSal);
+      var totalExp=Number($('#totalExpenditure').find('input[type=text]').val());
+      var currentEmpAnnualSal=Number($(this).closest('tr').find('#empSal').text()/12);
       $(this).closest('tr').remove();
-
-
+      revisedTotalExp=parseFloat(totalExp-currentEmpAnnualSal).toFixed(1);
+      var hasChildren=$('#employee').children().length;
+      if(hasChildren==0){
+        revisedTotalExp=0.0;
+      }
+      $('#totalExpenditure').find('input[type=text]').val(revisedTotalExp);
     });
+
+
   });
+
+
 
   function appendToTable(emp){
 
@@ -43,22 +41,13 @@
     $emp.append('<td id="empSal">'+emp.employeeAnnualSalary+'</td>');
     $emp.append('<button id="deleteButton">Delete Row</button>');
     $emp.append('</tr>');
-    console.log($emp);
     $('#employee').append($emp);
     var salary=emp.employeeAnnualSalary;
     var totalExp=$('#totalExpenditure').find('input[type=text]').val();
-    var newTotalExp=Number(salary)/12+Number(totalExp);
+    var newTotalExp=parseFloat(Number(salary)/12+Number(totalExp)).toFixed(1);
     $('#totalExpenditure').find('input[type=text]').val(newTotalExp);
   }
 
-  // function appendDom(emp) {
-  //   var $emp = $('<div class="employee"></div>'); // create a div jQuery object
-  //
-  //   $emp.append('<p>' + emp.employeeFirstName + ' ' + emp.employeeLastName + '</p>'); // add our employee data
-  //   $emp.append('<p>' + emp.employeeIdNumber + '</p>');
-  //
-  //   $('#employees').append($emp); // append our div to the DOM
-  // }
 
   function clearForm() {
     $('form').find('input[type=text]').val('');
